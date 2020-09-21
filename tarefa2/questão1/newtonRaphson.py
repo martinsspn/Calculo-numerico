@@ -5,5 +5,5 @@ def newthonRaphson(x):
 
 arq = open("ptsNewtonRaphson.pts", "w")
 arq.write(str(newthonRaphson(-3)) + " 0\n")
-arq.write(str(newthonRaphson(-1)) + " 0\n")
+arq.write(str(newthonRaphson(-1.5)) + " 0\n")
 arq.write(str(newthonRaphson(4)) + " 0 \n")

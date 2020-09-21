@@ -1,5 +1,5 @@
 def itrPontoFixo(x, a):
-    for i in range(200):
+    for i in range(100):
         x = x-a*(x**3 - 1.7*x*x - 12.78*x - 10.08)
     return x
 arq = open("ptsItrPontoFixo.pts", "w")

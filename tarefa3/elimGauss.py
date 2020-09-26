@@ -61,13 +61,40 @@ def vetResiduo(A, B, X, n):
         for j in range(n):
             soma += A[i][j]*X[j]
         AX[i] = soma
-        print("soma: ", soma)
     for i in range(n):
         r[i] = B[i] - AX[i]
     return r
 
-def refinamento(A, B, X):
-    pass
+def refinamento(A, B, n):
+    op = int(input("Digite o número de iterações a ser realizadas para o refinamento: "))
+    while True:
+        op1 = int(input("Digite 1 para realizar sem pivotamento e 2 para realizar com pivotamento: "))
+        if op1 == 1:
+            Arf, Brf = elimGauss(A, B, n)
+            Xref = resolutionElim(Arf, Brf, n)
+            Ar, Br = elimGauss(A, vetResiduo(A, B, Xref, n), n)
+            Y = resolutionElim(Ar, Br, n)
+            for i in range(op-1):
+                Ar, Br = elimGauss(A, vetResiduo(A, B, Y, n), n)
+                Y = resolutionElim(Ar, Br, n)
+            break
+        elif op1 == 2:
+            Arf, Brf = elimGauss(A, B, n)
+            Xref = resolutionElim(Arf, Brf, n)
+            Ar, Br = elimGaussPiv(A, vetResiduo(A, B, Xref, n), n)
+            Y = resolutionElim(Ar, Br, n)
+            for i in range(op-1):
+                Ar, Br = elimGaussPiv(A, vetResiduo(A, B, Y, n), n)
+                Y = resolutionElemin(Ar, Br, n)
+            break
+        else:
+            print("comando inválido!")
+    ref = [0.0]*n
+    for i in range(n):
+        ref[i] = Y[i] + Xref[i]
+    print("Refinamento X: ")
+    return ref
+
 arquivo = input("digite o nome do arquivo de teste com a extencao: ")
 arq = open(arquivo, "r")
 n = arq.readline()
@@ -89,7 +116,7 @@ for i in range(n):
 
 #MENUU
 while True:
-    x = int(input("MENU\n1 - Realizar eliminação de Gauss sem pivotamento parcial\n2 - Realizar eliminação de Gauss com pivotamento parcial\nDigite sua opção: "))
+    x = int(input("MENU\n1 - Realizar eliminação de Gauss sem pivotamento parcial\n2 - Realizar eliminação de Gauss com pivotamento parcial\n3 - realizar refinamento\nDigite sua opção: "))
     if x == 1:
         As, Bs = elimGauss(A, B, n)
         print(As)
@@ -108,4 +135,6 @@ while True:
         print("Resolução do sistema linear (X) = ", resolutionElim(Apiv, Bpiv, n))
         print("Vetor residuo com pivotamento partical: ", vetResiduo(A, B, resolutionElim(Apiv, Bpiv, n), n))
         break
-
+    elif x == 3:
+        print(refinamento(A, B, n))
+        break

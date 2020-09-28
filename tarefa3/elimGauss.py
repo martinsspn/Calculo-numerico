@@ -1,4 +1,5 @@
 from copy import deepcopy
+import numpy as np
 
 def elimGauss(A, B, n):
     A1 = deepcopy(A)
@@ -85,7 +86,7 @@ def refinamento(A, B, n):
             Y = resolutionElim(Ar, Br, n)
             for i in range(op-1):
                 Ar, Br = elimGaussPiv(A, vetResiduo(A, B, Y, n), n)
-                Y = resolutionElemin(Ar, Br, n)
+                Y = resolutionElim(Ar, Br, n)
             break
         else:
             print("comando inválido!")
@@ -136,5 +137,7 @@ while True:
         print("Vetor residuo com pivotamento partical: ", vetResiduo(A, B, resolutionElim(Apiv, Bpiv, n), n))
         break
     elif x == 3:
-        print(refinamento(A, B, n))
+        fim = refinamento(A, B, n)
+        print(fim)
+        print("Norma do refinamento: " + str(np.linalg.norm(fim)))
         break

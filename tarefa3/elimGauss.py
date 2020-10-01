@@ -94,7 +94,7 @@ def refinamento(A, B, n):
     for i in range(n):
         ref[i] = Y[i] + Xref[i]
     print("Refinamento X: ")
-    return ref
+    return ref, vetResiduo(A, B, Xref, n)
 
 arquivo = input("digite o nome do arquivo de teste com a extencao: ")
 arq = open(arquivo, "r")
@@ -120,8 +120,6 @@ while True:
     x = int(input("MENU\n1 - Realizar eliminação de Gauss sem pivotamento parcial\n2 - Realizar eliminação de Gauss com pivotamento parcial\n3 - realizar refinamento\nDigite sua opção: "))
     if x == 1:
         As, Bs = elimGauss(A, B, n)
-        print(As)
-        print(Bs)
         print("Resolução sem pivotamento parcial: ")
         print("A = ", As)
         print("B =  ", Bs)
@@ -137,7 +135,8 @@ while True:
         print("Vetor residuo com pivotamento partical: ", vetResiduo(A, B, resolutionElim(Apiv, Bpiv, n), n))
         break
     elif x == 3:
-        fim = refinamento(A, B, n)
+        fim, vetResiduo = refinamento(A, B, n)
         print(fim)
+        print("Norma do vetor residuo: " + str(np.linalg.norm(vetResiduo)))
         print("Norma do refinamento: " + str(np.linalg.norm(fim)))
         break

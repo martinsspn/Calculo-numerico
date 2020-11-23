@@ -50,7 +50,8 @@ def f(x):
 def analiticF(x):
 	return 2*(math.sin(x) - (5*(math.cos(5))))
 
-print(trapezioComposta(-5.0, 5.0, 3))
-print(simpson13(-5.0, 5.0, 3))
-print(simpson38(-5.0, 5.0, 3))
-print(analiticF(5))
+k = int(input("digite o valor de k: "))
+print("Regra do trapezio composta com k = " + str(k) + " => " + str(trapezioComposta(-5.0, 5.0, k)))
+print("Regra um terco de simpson com k = " + str(k) + " => " + str(simpson13(-5.0, 5.0, k)))
+print("Regra tres oitavos de simpson com k = " + str(k) + " => " + str(simpson38(-5.0, 5.0, k)))
+print("Resolucao analitica: " + str(analiticF(5)))

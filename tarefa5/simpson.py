@@ -13,5 +13,5 @@ def simpson38(a, b): #Regra de 3/8 de Simpson
 def f(x):
 	return x*math.sin(math.radians(x))
 
-print(simpson13(-5.0, 5.0))
-print(simpson38(-5.0, 5.0))
+print("regra um terco de simpson: " + str(simpson13(-5.0, 5.0)))
+print("regra tres oitavos de simpson: " + str(simpson38(-5.0, 5.0)))

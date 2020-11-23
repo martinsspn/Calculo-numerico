@@ -14,6 +14,6 @@ def trapezioComposta(a, b, n):
 def f(x):
 	return x*math.sin(x)
 
-print(trapezioComposta(-5.0, 5.0, 5))
-print(trapezioComposta(-5.0, 5.0, 10))
-print(trapezioComposta(-5.0, 5.0, 100))
+print("regra do trapezio composta com 5 subintervalos: " + str(trapezioComposta(-5.0, 5.0, 5)))
+print("regra do trapezio composta com 10 subintervalos: " + str(trapezioComposta(-5.0, 5.0, 10)))
+print("regra do trapezio composta com 100 subintervalos: " + str(trapezioComposta(-5.0, 5.0, 100)))

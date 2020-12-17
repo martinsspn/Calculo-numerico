@@ -38,7 +38,31 @@
     \subsection*{A)}\hspace{0.5cm}Para calcular uma função linear dos 1000 pontos dados precisamos fazer uma regressão linear, para isso, foi feito o código a seguir:
     \inputminted[]{python}{questao1.py}
     
-    Esse, calcula os valores que serão utilizados no sistema linear para encontrar os valores dos coeficientes da reta ao qual procuramos.
+    Esse, calcula os valores que serão utilizados no sistema linear a seguir para encontrar os valores dos coeficientes da reta ao qual procuramos:\\
+    $\begin{bmatrix}
+        n & \Sigma X_i^1\\
+        \Sigma X_i^1 & \Sigma X_i^2
+    \end{bmatrix}$
+    $\begin{bmatrix}
+        a_0\\
+        a_1\\
+    \end{bmatrix}$
+    = $\begin{bmatrix}
+        \Sigma Y_i\\
+        \Sigma Y_iX_i\\
+    \end{bmatrix}$\\
+    $\begin{bmatrix}
+        1000 & 1747.37505393\\
+        1747.37505393 & 3063.44355984
+    \end{bmatrix}$
+    $\begin{bmatrix}
+        a_0\\
+        a_1\\
+    \end{bmatrix}$
+    = $\begin{bmatrix}
+        62833.2423095\\
+        110505.297036\\
+    \end{bmatrix}$\\
     
     Para calcular esse sistema foi utilizado o algoritmo que foi criado anteriormente em outra tarefa desta disciplina, o algoritmo de eliminação de Gauss. Retornando assim os valores aproximados de $a_0$ e $a_1$, que são, respectivamente -60.066083327 e 70.3336844377. Portanto a função que representa bem a relação entre peso e altura é: y = -60.066083327 + 70.3336844377x
     
